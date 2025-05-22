@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
       <img src="https://wallpapercave.com/uwp/uwp757693.gif" height="250px" width="300px" ></img>
       <br><br>
@@ -59,3 +60,6 @@
 ### Discalimer :
 #### Use this only for educational Purpose....  I am not responsible for your action...Love you Guys.. Stay safe !!! Stay legal !!!
 ---
+=======
+# Zer0Snatch
+>>>>>>> 1c12875351c7b8dbc5422c3986a0a799b99e60d2
