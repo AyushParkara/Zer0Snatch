@@ -22,6 +22,42 @@ app = Flask(__name__)
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
+
+def banner():
+    banners = [r"""
+ZZZZZZZZZZZZZZZZZZZ                                             000000000        SSSSSSSSSSSSSSS                                           tttt                             hhhhhhh             
+Z:::::::::::::::::Z                                           00:::::::::00    SS:::::::::::::::S                                       ttt:::t                             h:::::h             
+Z:::::::::::::::::Z                                         00:::::::::::::00 S:::::SSSSSS::::::S                                       t:::::t                             h:::::h             
+Z:::ZZZZZZZZ:::::Z                                         0:::::::000:::::::0S:::::S     SSSSSSS                                       t:::::t                             h:::::h             
+ZZZZZ     Z:::::Z      eeeeeeeeeeee    rrrrr   rrrrrrrrr   0::::::0   0::::::0S:::::S          nnnn  nnnnnnnn      aaaaaaaaaaaaa  ttttttt:::::ttttttt        cccccccccccccccch::::h hhhhh      
+        Z:::::Z      ee::::::::::::ee  r::::rrr:::::::::r  0:::::0     0:::::0S:::::S          n:::nn::::::::nn    a::::::::::::a t:::::::::::::::::t      cc:::::::::::::::ch::::hh:::::hhh   
+       Z:::::Z      e::::::eeeee:::::eer:::::::::::::::::r 0:::::0     0:::::0 S::::SSSS       n::::::::::::::nn   aaaaaaaaa:::::at:::::::::::::::::t     c:::::::::::::::::ch::::::::::::::hh 
+      Z:::::Z      e::::::e     e:::::err::::::rrrrr::::::r0:::::0 000 0:::::0  SS::::::SSSSS  nn:::::::::::::::n           a::::atttttt:::::::tttttt    c:::::::cccccc:::::ch:::::::hhh::::::h
+     Z:::::Z       e:::::::eeeee::::::e r:::::r     r:::::r0:::::0 000 0:::::0    SSS::::::::SS  n:::::nnnn:::::n    aaaaaaa:::::a      t:::::t          c::::::c     ccccccch::::::h   h::::::h
+    Z:::::Z        e:::::::::::::::::e  r:::::r     rrrrrrr0:::::0     0:::::0       SSSSSS::::S n::::n    n::::n  aa::::::::::::a      t:::::t          c:::::c             h:::::h     h:::::h
+   Z:::::Z         e::::::eeeeeeeeeee   r:::::r            0:::::0     0:::::0            S:::::Sn::::n    n::::n a::::aaaa::::::a      t:::::t          c:::::c             h:::::h     h:::::h
+ZZZ:::::Z     ZZZZZe:::::::e            r:::::r            0::::::0   0::::::0            S:::::Sn::::n    n::::na::::a    a:::::a      t:::::t    ttttttc::::::c     ccccccch:::::h     h:::::h
+Z::::::ZZZZZZZZ:::Ze::::::::e           r:::::r            0:::::::000:::::::0SSSSSSS     S:::::Sn::::n    n::::na::::a    a:::::a      t::::::tttt:::::tc:::::::cccccc:::::ch:::::h     h:::::h
+Z:::::::::::::::::Z e::::::::eeeeeeee   r:::::r             00:::::::::::::00 S::::::SSSSSS:::::Sn::::n    n::::na:::::aaaa::::::a      tt::::::::::::::t c:::::::::::::::::ch:::::h     h:::::h
+Z:::::::::::::::::Z  ee:::::::::::::e   r:::::r               00:::::::::00   S:::::::::::::::SS n::::n    n::::n a::::::::::aa:::a       tt:::::::::::tt  cc:::::::::::::::ch:::::h     h:::::h
+ZZZZZZZZZZZZZZZZZZZ    eeeeeeeeeeeeee   rrrrrrr                 000000000      SSSSSSSSSSSSSSS   nnnnnn    nnnnnn  aaaaaaaaaa  aaaa         ttttttttttt      cccccccccccccccchhhhhhh     hhhhhhh
+""",
+    r"""
+@@@@@@@@  @@@@@@@@  @@@@@@@    @@@@@@@@    @@@@@@   @@@  @@@   @@@@@@   @@@@@@@   @@@@@@@  @@@  @@@  
+@@@@@@@@  @@@@@@@@  @@@@@@@@  @@@@@@@@@@  @@@@@@@   @@@@ @@@  @@@@@@@@  @@@@@@@  @@@@@@@@  @@@  @@@  
+     @@!  @@!       @@!  @@@  @@!   @@@@  !@@       @@!@!@@@  @@!  @@@    @@!    !@@       @@!  @@@  
+    !@!   !@!       !@!  @!@  !@!  @!@!@  !@!       !@!!@!@!  !@!  @!@    !@!    !@!       !@!  @!@  
+   @!!    @!!!:!    @!@!!@!   @!@ @! !@!  !!@@!!    @!@ !!@!  @!@!@!@!    @!!    !@!       @!@!@!@!  
+  !!!     !!!!!:    !!@!@!    !@!!!  !!!   !!@!!!   !@!  !!!  !!!@!!!!    !!!    !!!       !!!@!!!!  
+ !!:      !!:       !!: :!!   !!:!   !!!       !:!  !!:  !!!  !!:  !!!    !!:    :!!       !!:  !!!  
+:!:       :!:       :!:  !:!  :!:    !:!      !:!   :!:  !:!  :!:  !:!    :!:    :!:       :!:  !:!  
+ :: ::::   :: ::::  ::   :::  ::::::: ::  :::: ::    ::   ::  ::   :::     ::     ::: :::  ::   :::  
+: :: : :  : :: ::    :   : :   : : :  :   :: : :    ::    :    :   : :     :      :: :: :   :   : :  
+"""
+    ]
+    print(Fore.CYAN + Style.BRIGHT + random.choice(banners) + Style.RESET_ALL)
+
+
 @app.route('/')
 def index():
     return Response(open('index.html').read(), mimetype="text/html")
@@ -130,6 +166,8 @@ def start_tailscale_funnel(port=8080):
     return funnel_proc
 
 if __name__ == "__main__":
+    banner()  # 👈 Show the Zer0Snatch banner first
+
     try:
         user_port = input("Enter the port you want to run the Flask app on (default 8080): ").strip()
         port = int(user_port) if user_port else 8080
