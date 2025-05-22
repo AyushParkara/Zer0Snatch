@@ -15,7 +15,7 @@
  - Steal pic from front camera
  - Steal text from victim clipboard (added recently) 
  - Send logs to Discord and also save them locally in a txt file
- - Works on Android, Windows, Linux, macOS
+ - Works on Linux-based systems (e.g. Kali, Ubuntu, Parrot OS)
  - Uses iframe to load live website to make phishing attack more reliable
  - Bypass x-frame restrictions [2024]
  - Includes optional **Tailscale tunneling** support to host your flask app over the internet
