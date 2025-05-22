@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <p align="center">
       <img src="https://wallpapercave.com/uwp/uwp757693.gif" height="250px" width="300px" ></img>
       <br><br>
