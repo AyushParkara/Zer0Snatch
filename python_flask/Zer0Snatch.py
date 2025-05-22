@@ -101,7 +101,7 @@ def update_index_html_with_url(url, index_file_path='index.html'):
         with open(index_file_path, 'w') as file:
             file.write(new_content)
 
-        print(f"[+] Updated {index_file_path} with correct Tailscale URL.")
+        print(f"[+] Updated {index_file_path} with correct URL.")
     except Exception as e:
         print(f"[!] Failed to update {index_file_path}: {e}")
 
@@ -137,15 +137,25 @@ if __name__ == "__main__":
         print("[!] Invalid port number. Using default port 8080.")
         port = 8080
 
-    if not check_tailscale():
-        print("[!] Tailscale check/install failed or skipped. Exiting.")
-        sys.exit(1)
+    use_tailscale = input("Do you want to use Tailscale tunnel? (y/n): ").strip().lower()
 
-    funnel_process = start_tailscale_funnel(port)
+    if use_tailscale == 'y':
+        if not check_tailscale():
+            print("[!] Tailscale check/install failed or skipped. Exiting.")
+            sys.exit(1)
+
+        funnel_process = start_tailscale_funnel(port)
+    else:
+        local_url = f"http://localhost:{port}"
+        print(f"[*] Hosting locally at: {local_url}")
+        update_index_html_with_url(local_url)
+        print("[!] Note: You're hosting locally. If you want to expose this over the internet, enable Tailscale functionality.")
+        funnel_process = None
 
     try:
         app.run(debug=False, host='0.0.0.0', port=port)
     except KeyboardInterrupt:
-        print("\n[!] Interrupt received, stopping Tailscale funnel...")
-        funnel_process.terminate()
+        if funnel_process:
+            print("\n[!] Interrupt received, stopping Tailscale funnel...")
+            funnel_process.terminate()
         sys.exit(0)
