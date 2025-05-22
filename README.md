@@ -18,7 +18,7 @@
  - Works on Android, Windows, Linux, macOS
  - Uses iframe to load live website to make phishing attack more reliable
  - Bypass x-frame restrictions [2024]
- - Includes optional **Tailscale tunneling** support
+ - Includes optional **Tailscale tunneling** support to host your flask app over the internet
  - Allows **custom port selection** when running the Python server
  ---
  
