@@ -10,6 +10,7 @@ import sys
 import shutil
 import logging
 import re
+import random
 
 # Setup image directory
 IMAGE_DIR = 'image'
