@@ -74,7 +74,7 @@ python Zer0Snatch.py
 
 ## _Zer0Snatch in action_ [Method 2] :
 
-## "pending video here"
+[![Watch the video](https://img.youtube.com/vi/ikVjU0C-ydY/0.jpg)](https://youtu.be/ikVjU0C-ydY)
 ---
 
 ### Disclaimer:
