@@ -120,6 +120,7 @@ def check_tailscale():
 
     print("\n[+] To authenticate Tailscale, open this URL in your browser:")
     print("    https://login.tailscale.com")
+    subprocess.run(['sudo','tailscale','up'])
     input("[*] Press Enter after you have authenticated Tailscale to continue...")
     return True
 
